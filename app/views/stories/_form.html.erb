@@ -1,0 +1,12 @@
+<%= form_for @story, html: { multipart:true } do |f| %>
+  <div class="form_group">
+  <%= f.text_field :title, placeholder: 'Title',class:'form_control' %>
+  </div>
+  <div class="form_group">
+  <%= f.text_field :url, placeholder: 'URL', class: 'form_control' %>
+  </div>
+  <div class="form_group">
+  <%= f.file_field :image, placeholder: "Image", class: 'form_control' %>
+  </div>
+  <%= f.submit 'Save' %>
+<% end %>

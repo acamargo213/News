@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+    <%= link_to 'New Story', new_story_path %>
+<% end %>
+
+<% @stories.each do |story| %>
+  <div class="media">
+    <div class="media-left">
+      <img class="media-object" src="..." alt="...">
+      <%= image_tag story.image.url(:thumb), class: 'media_object' %>
+    </div>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= story.votes.count %>
+      <%= link_to story.title, story_url %>
+      </h4>
+    <% if user_signed_in? && story.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_story_path(story) %>
+      <% end %>
+      <%= link_to '', upvote_story_path(story) do %>
+        <i class="fa fa-arrow-up"></i>
+      <% end %>
+      |
+      <%= link_to '' , downvote_story_path(story) do %>
+        <i class="fa fa-arrow-down"></i>
+      <% end %>
+  </div>
+  </div>
+<% end %>
